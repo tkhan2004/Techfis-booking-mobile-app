@@ -24,7 +24,7 @@ class SplashPage extends GetView<SplashController> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset(
-                  "assets/images/logo.sgv",
+                  "assets/images/logo_company.png",
                   width: 500,
                   fit: BoxFit.contain,
                   filterQuality: FilterQuality.high,

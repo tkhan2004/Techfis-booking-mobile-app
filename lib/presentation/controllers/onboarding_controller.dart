@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking/models/onboarding_model.dart';
@@ -7,7 +6,9 @@ import 'package:hotel_booking/routes/app_routes.dart';
 
 class OnboardingController extends GetxController {
   var currentPage = 0.obs;
+
   final pageController = PageController();
+
   final List<OnboardingModel> onboardingPages = [
     OnboardingModel(
       title: 'Start Your Adventure Today',
@@ -28,13 +29,12 @@ class OnboardingController extends GetxController {
       image: 'assets/images/onboarding3.png',
     ),
   ];
-
   void nextPage() {
     if (currentPage.value < onboardingPages.length - 1) {
       pageController.nextPage(
-        duration: 300.milliseconds,
-        curve: Curves.ease,
-      ); // curves giúp mượt mà về timing cho chuyển cảnh
+        duration: 600.milliseconds,
+        curve: Curves.easeInOutCubic,
+      );
     } else {
       Get.offNamed(AppRoutes.LOGIN);
     }

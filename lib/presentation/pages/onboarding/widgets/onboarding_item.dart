@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:hotel_booking/component/button_component/button_text.dart';
 import 'package:hotel_booking/models/onboarding_model.dart';
 
-import '../../../../component/logo_component/company_logo.dart';
-
+/// OnboardingItem - Widget hiển thị nội dung của MỖI trang onboarding
+///
+/// Chỉ chứa các phần tử ĐỘNG (thay đổi theo từng trang):
+/// - Background image
+/// - Gradient overlay
+///
+/// Title và Description đã được di chuyển lên OnboardingPage
+/// để tránh render lại 3 lần không cần thiết
 class OnboardingItem extends StatelessWidget {
   final OnboardingModel data;
   const OnboardingItem({super.key, required this.data});
@@ -13,8 +17,12 @@ class OnboardingItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // ===== BACKGROUND IMAGE =====
+        // Hình nền full screen cho từng trang
         Positioned.fill(child: Image.asset(data.image, fit: BoxFit.cover)),
 
+        // ===== GRADIENT OVERLAY =====
+        // Lớp phủ gradient để text dễ đọc hơn
         Positioned.fill(
           child: Container(
             decoration: BoxDecoration(
@@ -26,62 +34,7 @@ class OnboardingItem extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          width: Get.width,
-          height: Get.height,
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 48),
-                  child: CompanyLogo(width: 200),
-                ),
-                Column(
-                  spacing: 12,
-                  children: [
-                    Text(
-                      data.title,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium
-                          ?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    Text(
-                      data.description,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.white.withOpacity(0.8),
-                      ),
-                    ),
-                    Column(
-                      spacing: 8,
-                      children: [
-                        ButtonText(
-                          text: "Continue",
-                          onPressed: () {},
-                          isOutline: false,
-                        ),
-                        ButtonText(
-                          text: "Skip for now",
-                          onPressed: () {},
-                          isOutline: true,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
       ],
     );
-    throw UnimplementedError();
   }
 }

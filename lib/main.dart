@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
 
-      // Theme chuẩn từ Figma đã setup (Bo góc 12, Padding 16, Font Inter)
       theme: AppTheme.lightTheme,
 
       // điều hướng đầu tiên
