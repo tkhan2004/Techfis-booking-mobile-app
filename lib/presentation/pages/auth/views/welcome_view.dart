@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking/component/auth_component/auth_redirect_text.dart';
+import 'package:hotel_booking/presentation/pages/auth/widget/auth_redirect_text.dart';
 import 'package:hotel_booking/component/button_component/button_text.dart';
 import 'package:hotel_booking/presentation/controllers/auth_controller.dart';
 import 'package:hotel_booking/presentation/pages/auth/widget/social_login_button.dart';
@@ -13,7 +13,7 @@ class WelcomeView extends GetView<AuthController> {
     return Column(
       children: [
         Text(
-          "Let’s Explore The World",
+          "Let's Explore The World",
           style: Theme.of(
             context,
           ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),

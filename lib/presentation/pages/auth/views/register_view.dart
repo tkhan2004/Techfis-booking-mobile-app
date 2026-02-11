@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking/component/auth_component/auth_redirect_text.dart';
-import 'package:hotel_booking/component/auth_component/auth_text_field.dart';
-import 'package:hotel_booking/component/auth_component/number_text_field.dart';
+import 'package:hotel_booking/presentation/pages/auth/widget/auth_redirect_text.dart';
+import 'package:hotel_booking/component/text_field_component/input_text_field.dart';
+import 'package:hotel_booking/component/text_field_component/number_text_field.dart';
 import 'package:hotel_booking/component/button_component/button_text.dart';
 import 'package:hotel_booking/presentation/controllers/auth_controller.dart';
 
