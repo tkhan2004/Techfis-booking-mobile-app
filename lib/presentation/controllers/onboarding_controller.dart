@@ -36,9 +36,9 @@ class OnboardingController extends GetxController {
         curve: Curves.easeInOutCubic,
       );
     } else {
-      Get.offNamed(AppRoutes.LOGIN);
+      Get.offNamed(AppRoutes.WELCOME);
     }
   }
 
-  void skip() => Get.offNamed(AppRoutes.LOGIN);
+  void skip() => Get.offNamed(AppRoutes.WELCOME);
 }
