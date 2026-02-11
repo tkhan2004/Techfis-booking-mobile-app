@@ -20,13 +20,15 @@ class ButtonText extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: isOutline ? Colors.transparent : AppColors.primary, 
-          foregroundColor: isOutline ? AppColors.primary : Colors.white,
-          
-          side: isOutline 
-            ? const BorderSide(color: AppColors.primary, width: 1.5) 
-            : BorderSide.none,
-          
+          backgroundColor: isOutline ? Colors.transparent : AppColors.primary,
+          foregroundColor: isOutline
+              ? AppColors.primary
+              : const Color.fromARGB(255, 42, 27, 27),
+
+          side: isOutline
+              ? const BorderSide(color: AppColors.primary, width: 1.5)
+              : BorderSide.none,
+
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
