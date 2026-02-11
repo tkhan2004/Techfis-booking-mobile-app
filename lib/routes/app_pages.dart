@@ -1,9 +1,11 @@
 import 'package:get/instance_manager.dart';
 import 'package:hotel_booking/presentation/controllers/home_page_controller.dart';
+import 'package:hotel_booking/presentation/controllers/main_controller.dart';
 import 'package:hotel_booking/presentation/controllers/onboarding_controller.dart';
 import 'package:hotel_booking/presentation/controllers/splash_controller.dart';
 import 'package:hotel_booking/presentation/controllers/auth_controller.dart';
 import 'package:hotel_booking/presentation/pages/home_page/home_page.dart';
+import 'package:hotel_booking/presentation/pages/main_view.dart';
 import 'package:hotel_booking/presentation/pages/onboarding/onboarding_page.dart';
 import 'package:hotel_booking/presentation/pages/auth/auth_page.dart';
 import 'package:hotel_booking/routes/app_routes.dart';
@@ -12,7 +14,7 @@ import 'package:get/route_manager.dart';
 import 'package:hotel_booking/presentation/pages/splash/splash_page.dart';
 
 class AppPages {
-  static const INITIAL = AppRoutes.SPLASH;
+  static const INITIAL = AppRoutes.HOME;
 
   static final routes = [
     GetPage(
@@ -38,8 +40,9 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.HOME,
-      page: () => const HomePage(),
+      page: () => const MainView(),
       binding: BindingsBuilder(() {
+        Get.put(MainController());
         Get.put(HomePageController());
       }),
     ),
