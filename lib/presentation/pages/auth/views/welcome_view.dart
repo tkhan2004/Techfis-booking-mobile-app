@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel_booking/presentation/pages/auth/widget/auth_redirect_text.dart';
 import 'package:hotel_booking/component/button_component/button_text.dart';
 import 'package:hotel_booking/presentation/controllers/auth_controller.dart';
-import 'package:hotel_booking/presentation/pages/auth/widget/social_login_button.dart';
+import 'package:hotel_booking/utils/constants/app_color.dart';
 
 class WelcomeView extends GetView<AuthController> {
   const WelcomeView({super.key});
@@ -22,6 +22,7 @@ class WelcomeView extends GetView<AuthController> {
         const Text(
           "Login to unlock exclusive deals and\nplan your perfect trip.",
           textAlign: TextAlign.center,
+          style: TextStyle(color: AppColors.greenDarkest, fontSize: 16),
         ),
         const Spacer(),
         ButtonText(

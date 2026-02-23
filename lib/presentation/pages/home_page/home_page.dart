@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get.dart';
+import 'package:hotel_booking/component/card_product_component/destination_card.dart';
 import 'package:hotel_booking/component/card_product_component/room_card.dart';
+import 'package:hotel_booking/component/card_product_component/travel_blog_card.dart';
 import 'package:hotel_booking/presentation/controllers/home_page_controller.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_background.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_header.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_search_bar.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_section_header.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/promo_carousel.dart';
+import 'package:hotel_booking/routes/app_routes.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  final controller = Get.put(HomePageController());
+class HomePage extends GetView<HomePageController> {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,26 +61,30 @@ class HomePage extends StatelessWidget {
 
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          for (
-                            int i = 0;
-                            i < controller.popularHotelList.length;
-                            i++
-                          )
-                            Obx(
-                              () => RoomCard(
-                                image: controller.popularHotelList[i].image,
-                                title: controller.popularHotelList[i].name,
-                                location:
-                                    controller.popularHotelList[i].location,
-                                price: controller.popularHotelList[i].price
-                                    .toString(),
-                                rating: controller.popularHotelList[i].rating
-                                    .toString(),
+                      child: Obx(
+                        () => Row(
+                          children: [
+                            for (var hotel in controller.popularHotelList)
+                              Obx(
+                                () => RoomCard(
+                                  image: hotel.image,
+                                  title: hotel.name,
+                                  location: hotel.location,
+                                  price: hotel.price.toString(),
+                                  rating: hotel.rating.toString(),
+                                  isFavorite: controller.isFavorite.value,
+                                  onFavoriteTap: () =>
+                                      controller.isFavorite.toggle(),
+                                  onTap: () {
+                                    Get.toNamed(
+                                      AppRoutes.ROOM_DETAIL,
+                                      arguments: hotel,
+                                    ); // phải truyền argument để truy cập vào dữ liệu trong room detail
+                                  },
+                                ),
                               ),
-                            ), // Padding để nội dung không bị che bởi bottom nav
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -95,26 +98,42 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 4),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          for (
-                            int i = 0;
-                            i < controller.popularHotelList.length;
-                            i++
-                          )
-                            Obx(
-                              () => RoomCard(
-                                image: controller.popularHotelList[i].image,
-                                title: controller.popularHotelList[i].name,
-                                location:
-                                    controller.popularHotelList[i].location,
-                                price: controller.popularHotelList[i].price
-                                    .toString(),
-                                rating: controller.popularHotelList[i].rating
-                                    .toString(),
+                      child: Obx(
+                        () => Row(
+                          children: [
+                            for (var hotel in controller.popularHotelList)
+                              DestinationCard(
+                                image: hotel.image,
+                                location: hotel.name,
+                                subLocation: hotel.location,
                               ),
-                            ), // Padding để nội dung không bị che bởi bottom nav
-                        ],
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    HomeSectionHeader(
+                      title: "Travel Blog",
+                      text: "Read all",
+                      onSeeAllPressed: () {
+                        // Navigate to popular hotels page
+                      },
+                    ),
+                    const SizedBox(height: 4),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Obx(
+                        () => Row(
+                          children: [
+                            for (var hotel in controller.popularHotelList)
+                              TravelBlogCard(
+                                image: hotel.image,
+                                title: hotel.name,
+                                subTitle: hotel.description,
+                                publishedAt: hotel.date,
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 200),
@@ -139,7 +158,7 @@ class HomePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),

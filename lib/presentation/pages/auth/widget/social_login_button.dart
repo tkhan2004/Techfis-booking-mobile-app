@@ -5,9 +5,9 @@ Widget buildSocialLoginButton() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      _socialButton(iconPath: "assets/icon/google.svg", onTap: () {}),
+      _socialButton(iconPath: "assets/icons/google.svg", onTap: () {}),
       const SizedBox(width: 16),
-      _socialButton(iconPath: "assets/icon/apple.svg", onTap: () {}),
+      _socialButton(iconPath: "assets/icons/apple.svg", onTap: () {}),
     ],
   );
 }

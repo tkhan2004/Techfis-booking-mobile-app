@@ -6,6 +6,7 @@ import 'package:hotel_booking/models/hotel_model.dart';
 class HomePageController extends GetxController {
   var popularHotelList = <HotelModel>[].obs;
   late RoomRepository roomRepository;
+  var isFavorite = false.obs;
 
   @override
   void onInit() {
