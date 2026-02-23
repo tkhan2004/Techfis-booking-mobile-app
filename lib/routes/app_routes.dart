@@ -6,4 +6,5 @@ abstract class AppRoutes {
   static const HOME = '/home';
   static const REGISTER = '/register';
   static const NOTIFICATIONS = '/notifications';
+  static const ROOM_DETAIL = '/room-detail';
 }

@@ -2,12 +2,14 @@ import 'package:get/instance_manager.dart';
 import 'package:hotel_booking/presentation/controllers/home_page_controller.dart';
 import 'package:hotel_booking/presentation/controllers/main_controller.dart';
 import 'package:hotel_booking/presentation/controllers/onboarding_controller.dart';
+import 'package:hotel_booking/presentation/controllers/room_detail_controller.dart';
 import 'package:hotel_booking/presentation/controllers/splash_controller.dart';
 import 'package:hotel_booking/presentation/controllers/auth_controller.dart';
 import 'package:hotel_booking/presentation/pages/home_page/home_page.dart';
 import 'package:hotel_booking/presentation/pages/main_view.dart';
 import 'package:hotel_booking/presentation/pages/onboarding/onboarding_page.dart';
 import 'package:hotel_booking/presentation/pages/auth/auth_page.dart';
+import 'package:hotel_booking/presentation/pages/room_detail/room_detail_page.dart';
 import 'package:hotel_booking/routes/app_routes.dart';
 
 import 'package:get/route_manager.dart';
@@ -44,6 +46,13 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(MainController());
         Get.put(HomePageController());
+      }),
+    ),
+    GetPage(
+      name: AppRoutes.ROOM_DETAIL,
+      page: () => const RoomDetailPage(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => RoomDetailController());
       }),
     ),
   ];
