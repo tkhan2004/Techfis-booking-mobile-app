@@ -17,7 +17,7 @@ class AppColors {
   static const Color greenDarkest = Color(0xFF002419);
 
   // Functional Colors (Theo chuẩn công ty)
-  static const Color background = limeLightest;
+  static const Color background = Colors.white;
   static const Color surface = Colors.white;
   static const Color error = Color(0xFFE74C3C); // Màu đỏ lỗi (chuẩn UI Kit)
   static const Color textMain = primaryDark;
