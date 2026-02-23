@@ -10,6 +10,8 @@ class HotelModel extends HotelEntity {
     required super.rating,
     required super.reviews,
     required super.description,
+    required super.date,
+    required super.time,
   });
 
   factory HotelModel.fromJson(Map<String, dynamic> json) {
@@ -22,6 +24,12 @@ class HotelModel extends HotelEntity {
       rating: (json['rating'] ?? 0).toDouble(),
       reviews: json['reviews'] ?? 0,
       description: json['description'] ?? '',
+      date: json['date'] != null
+          ? DateTime.parse(json['date'])
+          : DateTime.now(),
+      time: json['time'] != null
+          ? DateTime.parse(json['time'])
+          : DateTime.now(),
     );
   }
 
@@ -35,6 +43,8 @@ class HotelModel extends HotelEntity {
       rating: entity.rating,
       reviews: entity.reviews,
       description: entity.description,
+      date: entity.date,
+      time: entity.time,
     );
   }
 }

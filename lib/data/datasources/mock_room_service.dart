@@ -26,6 +26,8 @@ class MockRoomService {
       ), // Rating từ 3.0 - 5.0
       reviews: _faker.randomGenerator.integer(1000).toString(),
       description: _faker.lorem.sentence(),
+      date: _faker.date.dateTime(),
+      time: _faker.date.dateTime(),
     );
   }
 

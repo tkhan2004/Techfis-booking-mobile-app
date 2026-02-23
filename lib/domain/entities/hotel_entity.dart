@@ -7,6 +7,8 @@ class HotelEntity {
   final double rating;
   final String reviews;
   final String description;
+  final DateTime date;
+  final DateTime time;
 
   HotelEntity({
     required this.id,
@@ -17,5 +19,7 @@ class HotelEntity {
     required this.rating,
     required this.reviews,
     required this.description,
+    required this.date,
+    required this.time,
   });
 }
