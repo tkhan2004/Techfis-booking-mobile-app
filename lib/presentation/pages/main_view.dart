@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking/presentation/controllers/main_controller.dart';
 import 'package:hotel_booking/presentation/pages/home_page/home_page.dart';
+import 'package:hotel_booking/presentation/pages/search/search_page.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/carbon.dart';
@@ -16,7 +17,7 @@ class MainView extends GetView<MainController> {
   Widget build(BuildContext context) {
     final List<Widget> pages = [
       HomePage(),
-      const Center(child: Text("Search Page", style: TextStyle(fontSize: 24))),
+      const SearchPage(),
       const Center(child: Text("Booking Page", style: TextStyle(fontSize: 24))),
       const Center(
         child: Text("Favourite Page", style: TextStyle(fontSize: 24)),

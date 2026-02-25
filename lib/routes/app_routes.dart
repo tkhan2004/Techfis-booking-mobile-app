@@ -7,4 +7,8 @@ abstract class AppRoutes {
   static const REGISTER = '/register';
   static const NOTIFICATIONS = '/notifications';
   static const ROOM_DETAIL = '/room-detail';
+  static const BOOKING = '/booking';
+  static const PAYMENT_METHOD = '/payment-method';
+  static const ADD_CARD = '/add-card';
+  static const PAYMENT_SUCCESS = '/payment-success';
 }

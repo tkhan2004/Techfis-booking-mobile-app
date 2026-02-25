@@ -4,6 +4,8 @@ import 'package:hotel_booking/component/card_product_component/destination_card.
 import 'package:hotel_booking/component/card_product_component/room_card.dart';
 import 'package:hotel_booking/component/card_product_component/travel_blog_card.dart';
 import 'package:hotel_booking/presentation/controllers/home_page_controller.dart';
+import 'package:hotel_booking/presentation/controllers/main_controller.dart';
+import 'package:hotel_booking/presentation/controllers/search_controller.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_background.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_header.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_search_bar.dart';
@@ -40,9 +42,8 @@ class HomePage extends GetView<HomePageController> {
                   children: [
                     HomeSectionHeader(
                       title: "Promotion",
-                      onSeeAllPressed: () {
-                        // Navigate to promotions page
-                      },
+                      onSeeAllPressed: () => Get.find<MainController>()
+                          .switchToSearch(SearchCategory.promotion),
                     ),
                     const SizedBox(height: 4),
 
@@ -53,9 +54,8 @@ class HomePage extends GetView<HomePageController> {
                     HomeSectionHeader(
                       title: "Popular Hotel",
                       text: "See all",
-                      onSeeAllPressed: () {
-                        // Navigate to popular hotels page
-                      },
+                      onSeeAllPressed: () => Get.find<MainController>()
+                          .switchToSearch(SearchCategory.popular),
                     ),
                     const SizedBox(height: 4),
 
@@ -91,9 +91,8 @@ class HomePage extends GetView<HomePageController> {
                     HomeSectionHeader(
                       title: "Top Destination",
                       text: "See all",
-                      onSeeAllPressed: () {
-                        // Navigate to popular hotels page
-                      },
+                      onSeeAllPressed: () => Get.find<MainController>()
+                          .switchToSearch(SearchCategory.destination),
                     ),
                     const SizedBox(height: 4),
                     SingleChildScrollView(
@@ -115,9 +114,8 @@ class HomePage extends GetView<HomePageController> {
                     HomeSectionHeader(
                       title: "Travel Blog",
                       text: "Read all",
-                      onSeeAllPressed: () {
-                        // Navigate to popular hotels page
-                      },
+                      onSeeAllPressed: () => Get.find<MainController>()
+                          .switchToSearch(SearchCategory.all),
                     ),
                     const SizedBox(height: 4),
                     SingleChildScrollView(
