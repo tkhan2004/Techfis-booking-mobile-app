@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel_booking/component/appbar_component/custom_app_bar.dart';
 import 'package:hotel_booking/component/button_component/favorite_button.dart';
 import 'package:hotel_booking/component/card_product_component/room_card.dart';
-import 'package:hotel_booking/models/hotel_model.dart';
+import 'package:hotel_booking/component/helper_component/app_scaffold.dart';
+import 'package:hotel_booking/domain/entities/hotel_entity.dart';
 import 'package:hotel_booking/presentation/controllers/room_detail_controller.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/button_appbar_widget.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/button_room_detail_widget.dart';
-import 'package:hotel_booking/presentation/pages/room_detail/widgets/divider_widget.dart';
+import 'package:hotel_booking/component/helper_component/divider_widget.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/facility_item_widget.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/review_card_widget.dart';
-import 'package:hotel_booking/routes/app_routes.dart';
 
 class RoomDetailPage extends GetView<RoomDetailController> {
   const RoomDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final HotelModel hotel = Get.arguments as HotelModel;
-    // final ReviewModel review = Get.arguments as ReviewModel;
+    final HotelEntity hotel = controller.hotelEntity;
 
-    return Scaffold(
+    return AppScaffold(
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: buildPriceCard(),
+      bottomNavigationBar: buildPriceCard(hotel),
       body: CustomScrollView(
         slivers: [
+          // SliverAppBar để tạo hiệu ứng kéo xuống mờ dần
           SliverAppBar(
             expandedHeight: 360,
-            surfaceTintColor: Colors.white,
+            surfaceTintColor: Colors.transparent,
             backgroundColor: Colors.white,
             pinned: true,
             centerTitle: true,
@@ -38,25 +39,7 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                 fontSize: 20,
               ),
             ),
-            leading: GestureDetector(
-              onTap: () => Get.back(),
-              child: Container(
-                margin: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.4),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.8),
-                    width: 1.5,
-                  ),
-                ),
-                child: const Icon(
-                  Icons.arrow_back_ios_new,
-                  color: Colors.black,
-                  size: 18,
-                ),
-              ),
-            ),
+            leading: const AppBarBackButton(glassmorphism: true),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 8),
@@ -244,7 +227,7 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                   ),
                   const SizedBox(height: 8),
                   SizedBox(
-                    height: 111,
+                    height: 160,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
@@ -316,9 +299,10 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                                 onFavoriteTap: () =>
                                     controller.isFavorite.toggle(),
                                 onTap: () {
-                                  Get.toNamed(
-                                    AppRoutes.ROOM_DETAIL,
+                                  Get.to(
+                                    () => const RoomDetailPage(),
                                     arguments: similarHotel,
+                                    transition: Transition.cupertino,
                                   );
                                 },
                               ),

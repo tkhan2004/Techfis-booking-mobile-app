@@ -1,51 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'app_color.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
-    return ThemeData(
-      useMaterial3: true,
-      primaryColor: AppColors.primary,
-      scaffoldBackgroundColor: AppColors.background,
-      fontFamily: 'Inter',
-
-      textTheme: const TextTheme(
-        headlineMedium: TextStyle( // Header 3 - 28px
+    // Inter text theme từ Google Fonts — áp dụng toàn bộ app
+    final interTextTheme = GoogleFonts.interTextTheme(
+      const TextTheme(
+        headlineMedium: TextStyle(
           fontSize: 28,
           fontWeight: FontWeight.w600,
           color: AppColors.textMain,
         ),
-        titleMedium: TextStyle( // Top Nav Title - 20px
+        titleMedium: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w500,
           color: AppColors.textMain,
         ),
-        bodyLarge: TextStyle( // Button Text - 16px
+        bodyLarge: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: AppColors.textMain,
         ),
-        bodyMedium: TextStyle( // Small Title - 14px
+        bodyMedium: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.normal,
           color: AppColors.textMain,
         ),
-        labelSmall: TextStyle( // Super Mini Title - 10px
-          fontSize: 10,
-          color: AppColors.textSub,
-        ),
+        labelSmall: TextStyle(fontSize: 10, color: AppColors.textSub),
       ),
+    );
 
-      // Setup Button chuẩn Techfis (Radius 8/12, Padding 16)
+    return ThemeData(
+      useMaterial3: true,
+      primaryColor: AppColors.primary,
+      scaffoldBackgroundColor: Colors.white,
+      textTheme: interTextTheme,
+
+      // Setup Button chuẩn Techfis
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.primaryDark,
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12), // Bo góc 12px theo Style Guide
+            borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          textStyle: GoogleFonts.inter(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
 
@@ -53,7 +57,7 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.surface,
-        contentPadding: const EdgeInsets.all(16), // Padding 16px chuẩn công ty
+        contentPadding: const EdgeInsets.all(16),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,
