@@ -1,13 +1,11 @@
 import 'package:get/instance_manager.dart';
 import 'package:hotel_booking/presentation/controllers/booking_controller.dart';
-import 'package:hotel_booking/presentation/controllers/home_page_controller.dart';
 import 'package:hotel_booking/presentation/controllers/main_controller.dart';
 import 'package:hotel_booking/presentation/controllers/onboarding_controller.dart';
 import 'package:hotel_booking/presentation/controllers/room_detail_controller.dart';
 import 'package:hotel_booking/presentation/controllers/splash_controller.dart';
 import 'package:hotel_booking/presentation/controllers/auth_controller.dart';
 import 'package:hotel_booking/presentation/pages/booking/booking_page.dart';
-import 'package:hotel_booking/presentation/pages/home_page/home_page.dart';
 import 'package:hotel_booking/presentation/controllers/add_card_controller.dart';
 import 'package:hotel_booking/presentation/controllers/payment_method_controller.dart';
 import 'package:hotel_booking/presentation/controllers/search_controller.dart';
@@ -22,6 +20,7 @@ import 'package:hotel_booking/presentation/pages/payment/payment_success_page.da
 import 'package:hotel_booking/presentation/controllers/payment_success_controller.dart';
 import 'package:get/route_manager.dart';
 import 'package:hotel_booking/presentation/pages/splash/splash_page.dart';
+import 'package:hotel_booking/presentation/controllers/home_page_controller.dart';
 
 class AppPages {
   static const INITIAL = AppRoutes.HOME;

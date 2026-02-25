@@ -32,6 +32,8 @@ class AppScaffold extends StatelessWidget {
       body: Stack(
         children: [
           Positioned.fill(
+            bottom: -100,
+            right: -200,
             child: Image.asset(
               'assets/images/background_logo.png',
               fit: BoxFit.fitWidth,

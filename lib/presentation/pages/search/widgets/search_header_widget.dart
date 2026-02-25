@@ -1,10 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel_booking/presentation/controllers/search_controller.dart';
+import 'package:hotel_booking/presentation/controllers/filter_controller.dart';
+import 'package:hotel_booking/presentation/pages/filter/filter_page.dart';
+import 'package:hotel_booking/presentation/pages/filter/widgets/location_search_widget.dart';
+import 'package:hotel_booking/component/button_component/button_text.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 
 class SearchHeaderWidget extends StatelessWidget {
   final HotelSearchController controller;
   const SearchHeaderWidget({super.key, required this.controller});
+
+  void _showLocationBottomSheet() {
+    Get.bottomSheet(
+      Container(
+        padding: const EdgeInsets.all(16),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 40,
+              height: 4,
+              margin: const EdgeInsets.only(bottom: 16),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const LocationSearchWidget(),
+            const SizedBox(height: 24),
+            ButtonText(text: "Apply Location", onPressed: () => Get.back()),
+            const SizedBox(height: 16),
+          ],
+        ),
+      ),
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+    );
+  }
+
+  void _showFilterBottomSheet() {
+    if (!Get.isRegistered<FilterController>()) {
+      Get.put(FilterController());
+    }
+
+    Get.bottomSheet(
+      const FilterBottomSheet(),
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +75,7 @@ class SearchHeaderWidget extends StatelessWidget {
                     onChanged: controller.onSearch,
                     cursorColor: AppColors.primary,
                     decoration: const InputDecoration(
-                      hintText: 'Search by name or location...',
+                      hintText: 'Search hotel name...',
                       hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
                       prefixIcon: Icon(
                         Icons.search_rounded,
@@ -45,12 +95,47 @@ class SearchHeaderWidget extends StatelessWidget {
                       color: Colors.grey,
                       size: 24,
                     ),
-                    onPressed: () {},
+                    onPressed: _showFilterBottomSheet,
                   ),
                 ),
               ],
             ),
           ),
+          const SizedBox(height: 12),
+          GestureDetector(
+            onTap: _showLocationBottomSheet,
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withValues(alpha: 0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.location_on,
+                    color: AppColors.primary,
+                    size: 16,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                const Text(
+                  "Select location...",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const Spacer(),
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 14,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 4),
         ],
       ),
     );
