@@ -33,6 +33,7 @@ class RoomCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(24),
+          border: Border.all(color: Colors.grey.shade200, width: 1),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.04),
@@ -115,7 +116,6 @@ class RoomCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Giá tiền
                       Text.rich(
                         TextSpan(
                           text: price + " VNĐ",
@@ -128,7 +128,7 @@ class RoomCard extends StatelessWidget {
                             TextSpan(
                               text: "/night",
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 12,
                                 color: Colors.grey,
                                 fontWeight: FontWeight.normal,
                               ),

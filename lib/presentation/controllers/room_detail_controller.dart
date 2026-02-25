@@ -12,7 +12,9 @@ class RoomDetailController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    hotelEntity = Get.arguments as HotelEntity;
+    if (Get.arguments != null && Get.arguments is HotelEntity) {
+      hotelEntity = Get.arguments as HotelEntity;
+    }
     print(hotelEntity.name);
     _loadSimilarRooms();
   }

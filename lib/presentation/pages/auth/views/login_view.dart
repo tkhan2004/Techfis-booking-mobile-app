@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking/presentation/pages/auth/widget/auth_redirect_text.dart';
+import 'package:hotel_booking/presentation/pages/auth/widgets/auth_redirect_text.dart';
 import 'package:hotel_booking/component/text_field_component/input_text_field.dart';
 import 'package:hotel_booking/component/button_component/button_text.dart';
 import 'package:hotel_booking/presentation/controllers/auth_controller.dart';
-import 'package:hotel_booking/presentation/pages/auth/widget/social_login_button.dart';
+import 'package:hotel_booking/presentation/pages/auth/widgets/social_login_button.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 
 class LoginView extends GetView<AuthController> {

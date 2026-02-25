@@ -13,6 +13,7 @@ class MockRoomService {
       name:
           "${_faker.address.city()} ${_faker.randomGenerator.element(['Resort', 'Hotel', 'Villa', 'Spa'])}",
       location: "${_faker.address.streetAddress()}, ${_faker.address.city()}",
+
       // Dùng ảnh tạm từ Unsplash dựa trên từ khóa 'hotel'
       image:
           "https://loremflickr.com/320/240/hotel?lock=${_faker.randomGenerator.integer(100)}",
@@ -25,7 +26,7 @@ class MockRoomService {
         1,
       ), // Rating từ 3.0 - 5.0
       reviews: _faker.randomGenerator.integer(1000).toString(),
-      description: _faker.lorem.sentence(),
+      description: _faker.lorem.sentences(3).join(' '),
       date: _faker.date.dateTime(),
       time: _faker.date.dateTime(),
     );

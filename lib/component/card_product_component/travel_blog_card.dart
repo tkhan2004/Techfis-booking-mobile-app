@@ -41,6 +41,7 @@ class TravelBlogCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: Colors.grey.shade200, width: 1),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.04),

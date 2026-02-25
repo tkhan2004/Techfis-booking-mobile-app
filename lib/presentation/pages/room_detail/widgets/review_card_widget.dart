@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking/presentation/pages/room_detail/widgets/star_ratting_widget.dart';
+import 'package:hotel_booking/component/rating_component/star_ratting_widget.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 
 class ReviewCardWidget extends StatelessWidget {
@@ -31,6 +31,7 @@ class ReviewCardWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.limeLightest,
           borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: const Color(0xFFDDE8B8), width: 1),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),

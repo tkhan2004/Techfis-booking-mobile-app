@@ -63,7 +63,6 @@ class FacilityItemWidget extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-            fontFamily: 'Inter',
             fontSize: 12,
             fontWeight: FontWeight.w500,
             color: Colors.black,
