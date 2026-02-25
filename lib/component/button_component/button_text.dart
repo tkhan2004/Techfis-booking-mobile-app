@@ -4,7 +4,7 @@ import 'package:hotel_booking/utils/constants/app_color.dart';
 class ButtonText extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final bool isOutline; // Biến để chọn dạng nút
+  final bool isOutline;
 
   const ButtonText({
     super.key,
@@ -38,7 +38,7 @@ class ButtonText extends StatelessWidget {
         child: Text(
           text,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
-            color: isOutline ? Colors.white : Colors.black,
+            color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
