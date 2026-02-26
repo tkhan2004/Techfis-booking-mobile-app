@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel_booking/utils/constants/app_color.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget>? actions;
   final bool glassmorphism;
+  final Color? backgroundColor;
   final VoidCallback? onBack;
+  final bool isBack;
 
   const CustomAppBar({
     super.key,
     required this.title,
     this.actions,
     this.glassmorphism = false,
+    this.backgroundColor,
     this.onBack,
+    this.isBack = true,
   });
 
   @override
@@ -21,11 +26,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: glassmorphism ? Colors.transparent : Colors.white,
+      backgroundColor:
+          backgroundColor ??
+          (glassmorphism ? AppColors.secondary : Colors.white),
       surfaceTintColor: Colors.transparent,
       elevation: 0,
       centerTitle: true,
-      leading: AppBarBackButton(glassmorphism: glassmorphism, onBack: onBack),
+      leading: isBack
+          ? AppBarBackButton(glassmorphism: glassmorphism, onBack: onBack)
+          : null,
       title: Text(
         title,
         style: const TextStyle(
