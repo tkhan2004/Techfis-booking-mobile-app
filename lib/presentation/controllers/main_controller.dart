@@ -24,12 +24,10 @@ class MainController extends GetxController {
   /// Switch sang Search tab + auto-filter theo category
   /// Gọi từ HomePage khi user tap "See all"
   void switchToSearch(String? category) {
-    changeTab(1); // Search = index 1
-    Future.delayed(const Duration(milliseconds: 50), () {
-      try {
-        Get.find<HotelSearchController>().setCategory(category);
-      } catch (_) {}
-    });
+    if (category != null) {
+      Get.find<HotelSearchController>().setCategory(category);
+    }
+    Get.toNamed('/search-result');
   }
 
   bool isCurrentTab(int index) => currentIndex.value == index;

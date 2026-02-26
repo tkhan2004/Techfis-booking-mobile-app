@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking/presentation/controllers/main_controller.dart';
 import 'package:hotel_booking/presentation/pages/home_page/home_page.dart';
+import 'package:hotel_booking/presentation/pages/profile/profile_page.dart';
 import 'package:hotel_booking/presentation/pages/search/search_page.dart';
+import 'package:hotel_booking/presentation/pages/favorite/favorite_page.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/carbon.dart';
@@ -19,10 +21,8 @@ class MainView extends GetView<MainController> {
       HomePage(),
       const SearchPage(),
       const Center(child: Text("Booking Page", style: TextStyle(fontSize: 24))),
-      const Center(
-        child: Text("Favourite Page", style: TextStyle(fontSize: 24)),
-      ),
-      const Center(child: Text("Profile Page", style: TextStyle(fontSize: 24))),
+      const FavoritePage(),
+      const ProfilePage(),
     ];
 
     return Scaffold(
@@ -48,7 +48,7 @@ class MainView extends GetView<MainController> {
         borderRadius: BorderRadius.circular(60),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 20,
             offset: const Offset(0, 10),
             spreadRadius: 0,
@@ -122,7 +122,7 @@ class MainView extends GetView<MainController> {
         color: Colors.transparent,
         child: InkWell(
           onTap: () => controller.changeTab(index),
-          splashColor: Colors.white.withOpacity(0.2),
+          splashColor: Colors.white.withValues(alpha: 0.2),
           highlightColor: Colors.transparent,
           borderRadius: BorderRadius.circular(30),
           child: SizedBox(
