@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hotel_booking/routes/app_routes.dart';
 
 class HomeSearchBar extends StatelessWidget {
   const HomeSearchBar({super.key});
@@ -21,12 +23,16 @@ class HomeSearchBar extends StatelessWidget {
             ),
           ],
         ),
-        child: const TextField(
-          decoration: InputDecoration(
-            hintText: "Where are you going?",
-            hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-            prefixIcon: Icon(Icons.search, color: Colors.grey),
-            contentPadding: EdgeInsets.symmetric(vertical: 15),
+        child: GestureDetector(
+          onTap: () => Get.toNamed(AppRoutes.SEARCH_RESULT),
+          child: const TextField(
+            enabled: false,
+            decoration: InputDecoration(
+              hintText: "Where are you going?",
+              hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
+              prefixIcon: Icon(Icons.search, color: Colors.grey),
+              contentPadding: EdgeInsets.symmetric(vertical: 15),
+            ),
           ),
         ),
       ),

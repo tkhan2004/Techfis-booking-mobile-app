@@ -28,8 +28,6 @@ class HomePage extends GetView<HomePageController> {
             alignment: Alignment.centerRight,
           ),
         ),
-
-        // Scrollable Content
         SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Column(
@@ -58,7 +56,6 @@ class HomePage extends GetView<HomePageController> {
                           .switchToSearch(SearchCategory.popular),
                     ),
                     const SizedBox(height: 4),
-
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Obx(

@@ -63,6 +63,7 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: value,
+          dropdownColor: Colors.white,
           hint: Row(
             children: [
               const SizedBox(width: 16),

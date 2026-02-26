@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get.dart';
+import 'package:hotel_booking/routes/app_routes.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -55,7 +55,7 @@ class HomeHeader extends StatelessWidget {
                 IconButton(
                   onPressed: () {
                     HapticFeedback.lightImpact();
-                    Get.toNamed("/notifications");
+                    Get.toNamed(AppRoutes.NOTIFICATIONS);
                   },
                   icon: const CircleAvatar(
                     radius: 22,

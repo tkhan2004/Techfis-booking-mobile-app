@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel_booking/component/card_product_component/room_card.dart';
+import 'package:hotel_booking/presentation/pages/search/widgets/search_room_card.dart';
 import 'package:hotel_booking/presentation/controllers/search_controller.dart';
 import 'package:hotel_booking/routes/app_routes.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
@@ -71,12 +71,12 @@ class SearchResultWidget extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
-              padding: const EdgeInsets.fromLTRB(16, 12, 0, 16),
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
               itemCount: hotels.length,
               separatorBuilder: (_, __) => const SizedBox(height: 12),
               itemBuilder: (_, i) {
                 final hotel = hotels[i];
-                return RoomCard(
+                return SearchRoomCard(
                   image: hotel.image,
                   title: hotel.name,
                   location: hotel.location,
@@ -86,6 +86,8 @@ class SearchResultWidget extends StatelessWidget {
                   onFavoriteTap: () {},
                   onTap: () =>
                       Get.toNamed(AppRoutes.ROOM_DETAIL, arguments: hotel),
+                  onBookNowTap: () =>
+                      Get.toNamed(AppRoutes.BOOKING, arguments: hotel),
                 );
               },
             ),

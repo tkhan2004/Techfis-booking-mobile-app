@@ -23,7 +23,6 @@ class FilterBottomSheet extends GetView<FilterController> {
       child: Column(
         children: [
           const SizedBox(height: 12),
-          // Pill for drag indicator
           Container(
             width: 40,
             height: 4,
@@ -53,14 +52,13 @@ class FilterBottomSheet extends GetView<FilterController> {
                   const StarRatingGroup(),
                   const FilterSectionHeader(title: "Facilities"),
                   const FacilitiesOptionRow(),
-                  const FilterSectionHeader(title: "Promotion % Discount"),
+                  const FilterSectionHeader(title: "Promotion & Discount"),
                   const PromotionWidget(),
                   const SizedBox(height: 24),
                 ],
               ),
             ),
           ),
-          // Bottom Navigation Buttons
           Container(
             padding: const EdgeInsets.only(
               bottom: 32,
