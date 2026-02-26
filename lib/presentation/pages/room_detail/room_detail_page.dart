@@ -11,20 +11,21 @@ import 'package:hotel_booking/presentation/pages/room_detail/widgets/button_room
 import 'package:hotel_booking/component/helper_component/divider_widget.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/facility_item_widget.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/review_card_widget.dart';
+import 'package:hotel_booking/presentation/pages/write_review/write_review_page.dart';
+import 'package:hotel_booking/routes/app_routes.dart';
+import 'package:card_swiper/card_swiper.dart';
+import 'package:hotel_booking/utils/constants/app_color.dart';
 
 class RoomDetailPage extends GetView<RoomDetailController> {
   const RoomDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final HotelEntity hotel = controller.hotelEntity;
-
     return AppScaffold(
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: buildPriceCard(hotel),
+      bottomNavigationBar: buildPriceCard(controller.hotelEntity),
       body: CustomScrollView(
         slivers: [
-          // SliverAppBar để tạo hiệu ứng kéo xuống mờ dần
           SliverAppBar(
             expandedHeight: 360,
             surfaceTintColor: Colors.transparent,
@@ -52,12 +53,28 @@ class RoomDetailPage extends GetView<RoomDetailController> {
               ),
             ],
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.network(
-                hotel.image,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  color: Colors.grey[300],
-                  child: const Icon(Icons.image, color: Colors.grey, size: 64),
+              background: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  return Image.network(
+                    controller.hotelEntity.image,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      color: Colors.grey[300],
+                      child: const Icon(
+                        Icons.image,
+                        color: Colors.grey,
+                        size: 64,
+                      ),
+                    ),
+                  );
+                },
+                itemCount: 5, // Mocking 5 images
+                autoplay: true,
+                pagination: const SwiperPagination(
+                  builder: DotSwiperPaginationBuilder(
+                    activeColor: AppColors.primary,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -69,7 +86,7 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    hotel.name,
+                    controller.hotelEntity.name,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -89,7 +106,7 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
-                          hotel.location,
+                          controller.hotelEntity.location,
                           style: TextStyle(
                             color: Colors.grey[600],
                             fontSize: 13,
@@ -106,7 +123,7 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                       const Icon(Icons.star, color: Colors.orange, size: 16),
                       const SizedBox(width: 4),
                       Text(
-                        hotel.rating.toString(),
+                        controller.hotelEntity.rating.toString(),
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
@@ -114,7 +131,7 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        "(${hotel.reviews} reviews)",
+                        "(${controller.hotelEntity.reviews} reviews)",
                         style: TextStyle(color: Colors.grey[500], fontSize: 12),
                       ),
                     ],
@@ -130,7 +147,7 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    hotel.description,
+                    controller.hotelEntity.description,
                     style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 14,
@@ -163,7 +180,7 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                   Image.asset("assets/images/map.png"),
                   const SizedBox(height: 8),
                   Text(
-                    hotel.location,
+                    controller.hotelEntity.location,
                     style: TextStyle(color: Colors.grey[700]),
                   ),
                   const SizedBox(height: 8),
@@ -269,7 +286,9 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                   const SizedBox(height: 8),
                   ButtonRoomDetailWidget(
                     text: "Write a Review",
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.WRITE_REVIEW);
+                    },
                   ),
                   buildDivider(),
                   const Text(

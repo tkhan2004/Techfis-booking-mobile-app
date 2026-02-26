@@ -11,4 +11,6 @@ abstract class AppRoutes {
   static const PAYMENT_METHOD = '/payment-method';
   static const ADD_CARD = '/add-card';
   static const PAYMENT_SUCCESS = '/payment-success';
+  static const SEARCH_RESULT = '/search-result';
+  static const WRITE_REVIEW = '/write-review';
 }

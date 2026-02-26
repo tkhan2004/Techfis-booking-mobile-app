@@ -15,12 +15,16 @@ import 'package:hotel_booking/presentation/pages/auth/auth_page.dart';
 import 'package:hotel_booking/presentation/pages/payment/add_new_card_page.dart';
 import 'package:hotel_booking/presentation/pages/payment/payment_method_page.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/room_detail_page.dart';
+import 'package:hotel_booking/presentation/pages/write_review/write_review_page.dart';
 import 'package:hotel_booking/routes/app_routes.dart';
 import 'package:hotel_booking/presentation/pages/payment/payment_success_page.dart';
 import 'package:hotel_booking/presentation/controllers/payment_success_controller.dart';
 import 'package:get/route_manager.dart';
 import 'package:hotel_booking/presentation/pages/splash/splash_page.dart';
 import 'package:hotel_booking/presentation/controllers/home_page_controller.dart';
+import 'package:hotel_booking/presentation/controllers/notifications_controller.dart';
+import 'package:hotel_booking/presentation/pages/notifications/notifications_page.dart';
+import 'package:hotel_booking/presentation/pages/search/search_result_page.dart';
 
 class AppPages {
   static const INITIAL = AppRoutes.HOME;
@@ -89,6 +93,27 @@ class AppPages {
       page: () => const PaymentSuccessPage(),
       binding: BindingsBuilder(() {
         Get.lazyPut(() => PaymentSuccessController(), fenix: true);
+      }),
+    ),
+    GetPage(
+      name: AppRoutes.SEARCH_RESULT,
+      page: () => const SearchResultPage(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => HotelSearchController(), fenix: true);
+      }),
+    ),
+    GetPage(
+      name: AppRoutes.NOTIFICATIONS,
+      page: () => const NotificationsPage(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => NotificationsController(), fenix: true);
+      }),
+    ),
+    GetPage(
+      name: AppRoutes.WRITE_REVIEW,
+      page: () => const WriteReviewPage(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => RoomDetailController(), fenix: true);
       }),
     ),
   ];
