@@ -25,6 +25,12 @@ import 'package:hotel_booking/presentation/controllers/home_page_controller.dart
 import 'package:hotel_booking/presentation/controllers/notifications_controller.dart';
 import 'package:hotel_booking/presentation/pages/notifications/notifications_page.dart';
 import 'package:hotel_booking/presentation/pages/search/search_result_page.dart';
+import 'package:hotel_booking/presentation/pages/travel_blog_detail/travel_blog_detail_page.dart';
+import 'package:hotel_booking/presentation/controllers/travel_blog_detail_controller.dart';
+import 'package:hotel_booking/presentation/pages/travel_blog_list/travel_blog_list_page.dart';
+import 'package:hotel_booking/presentation/controllers/travel_blog_list_controller.dart';
+import 'package:hotel_booking/presentation/pages/booking_detail/booking_detail_page.dart';
+import 'package:hotel_booking/presentation/controllers/booking_detail_controller.dart';
 
 class AppPages {
   static const INITIAL = AppRoutes.HOME;
@@ -114,6 +120,27 @@ class AppPages {
       page: () => const WriteReviewPage(),
       binding: BindingsBuilder(() {
         Get.lazyPut(() => RoomDetailController(), fenix: true);
+      }),
+    ),
+    GetPage(
+      name: AppRoutes.TRAVEL_BLOG_DETAIL,
+      page: () => const TravelBlogDetailPage(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => TravelBlogDetailController(), fenix: true);
+      }),
+    ),
+    GetPage(
+      name: AppRoutes.TRAVEL_BLOG_LIST,
+      page: () => const TravelBlogListPage(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => TravelBlogListController(), fenix: true);
+      }),
+    ),
+    GetPage(
+      name: AppRoutes.BOOKING_DETAIL,
+      page: () => const BookingDetailPage(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => BookingDetailController(), fenix: true);
       }),
     ),
   ];

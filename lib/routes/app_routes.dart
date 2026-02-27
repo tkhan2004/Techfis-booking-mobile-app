@@ -13,4 +13,7 @@ abstract class AppRoutes {
   static const PAYMENT_SUCCESS = '/payment-success';
   static const SEARCH_RESULT = '/search-result';
   static const WRITE_REVIEW = '/write-review';
+  static const TRAVEL_BLOG_DETAIL = '/travel-blog-detail';
+  static const TRAVEL_BLOG_LIST = '/travel-blog-list';
+  static const BOOKING_DETAIL = '/booking-detail';
 }
