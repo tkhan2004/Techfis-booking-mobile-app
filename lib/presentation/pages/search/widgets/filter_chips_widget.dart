@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking/presentation/controllers/search_controller.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
+import 'package:hotel_booking/domain/entities/search_category.dart';
 
 class FilterChipsWidget extends StatelessWidget {
   final HotelSearchController controller;

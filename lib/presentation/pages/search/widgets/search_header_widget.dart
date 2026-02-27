@@ -32,7 +32,18 @@ class SearchHeaderWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
-            const LocationSearchWidget(),
+            LocationSearchWidget(
+              onLocationSelected: (city, district, ward) {
+                // Formatting selected location text
+                String newLocation = "Select location...";
+                if (city != null) {
+                  newLocation = city;
+                  if (district != null) newLocation = "$district, $newLocation";
+                  if (ward != null) newLocation = "$ward, $newLocation";
+                }
+                controller.selectedLocation.value = newLocation;
+              },
+            ),
             const SizedBox(height: 24),
             ButtonText(text: "Apply Location", onPressed: () => Get.back()),
             const SizedBox(height: 16),
@@ -119,11 +130,13 @@ class SearchHeaderWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                const Text(
-                  "Select location...",
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w500,
+                Obx(
+                  () => Text(
+                    controller.selectedLocation.value,
+                    style: const TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 const Spacer(),

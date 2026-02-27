@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LocationSearchWidget extends StatefulWidget {
-  const LocationSearchWidget({super.key});
+  final Function(String?, String?, String?)? onLocationSelected;
+
+  const LocationSearchWidget({super.key, this.onLocationSelected});
 
   @override
   State<LocationSearchWidget> createState() => _LocationSearchWidgetState();
@@ -32,6 +34,16 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
     "Phường Bến Nghé",
     "Phường Dịch Vọng",
   ];
+
+  void _notifyLocationChanged() {
+    if (widget.onLocationSelected != null) {
+      widget.onLocationSelected!(
+        _selectedCity,
+        _selectedDistrict,
+        _selectedWard,
+      );
+    }
+  }
 
   @override
   void dispose() {
@@ -164,6 +176,7 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
                   _selectedWard = "Phường Bến Nghé";
                   _streetController.text = "65 Lê Lợi";
                 });
+                _notifyLocationChanged();
               },
               child: const Row(
                 children: [
@@ -197,6 +210,7 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
                   null; // Reset district and ward when city changes
               _selectedWard = null;
             });
+            _notifyLocationChanged();
           },
         ),
 
@@ -211,6 +225,7 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
               _selectedDistrict = val;
               _selectedWard = null; // Reset ward when district changes
             });
+            _notifyLocationChanged();
           },
         ),
 
@@ -224,14 +239,8 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
             setState(() {
               _selectedWard = val;
             });
+            _notifyLocationChanged();
           },
-        ),
-
-        // Street address
-        _buildTextField(
-          "Số nhà, Tên đường (không bắt buộc)",
-          Icons.edit_road_outlined,
-          _streetController,
         ),
       ],
     );

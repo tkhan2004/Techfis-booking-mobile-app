@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel_booking/presentation/pages/search/widgets/search_room_card.dart';
 import 'package:hotel_booking/presentation/controllers/search_controller.dart';
 import 'package:hotel_booking/routes/app_routes.dart';
+import 'package:hotel_booking/domain/entities/search_category.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 
 class SearchResultWidget extends StatelessWidget {
@@ -49,7 +50,7 @@ class SearchResultWidget extends StatelessWidget {
                   Text(
                     '${hotels.length} results',
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 12,
                       color: Colors.grey.shade500,
                       fontWeight: FontWeight.w500,
                     ),
@@ -60,7 +61,7 @@ class SearchResultWidget extends StatelessWidget {
                       controller.activeCategory.value ?? SearchCategory.all,
                     ),
                     style: const TextStyle(
-                      fontSize: 13,
+                      fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color: AppColors.secondary,
                     ),

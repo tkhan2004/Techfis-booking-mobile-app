@@ -106,7 +106,7 @@ class SearchRoomCard extends StatelessWidget {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.primary.withValues(alpha: 0.1),
+                          color: AppColors.primary.withValues(alpha: 0.4),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -122,8 +122,8 @@ class SearchRoomCard extends StatelessWidget {
                               rating,
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                                color: AppColors.primaryDark,
+                                fontSize: 12,
+                                color: AppColors.primary,
                               ),
                             ),
                           ],
