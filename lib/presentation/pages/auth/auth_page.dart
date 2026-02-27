@@ -6,6 +6,7 @@ import 'package:hotel_booking/presentation/pages/auth/views/login_view.dart';
 import 'package:hotel_booking/presentation/pages/auth/views/otp_verification_view.dart';
 import 'package:hotel_booking/presentation/pages/auth/views/register_view.dart';
 import 'package:hotel_booking/presentation/pages/auth/views/welcome_view.dart';
+import 'package:hotel_booking/domain/entities/auth_step.dart';
 
 class AuthPage extends GetView<AuthController> {
   const AuthPage({Key? key}) : super(key: key);

@@ -5,6 +5,7 @@ import 'package:hotel_booking/component/text_field_component/input_text_field.da
 import 'package:hotel_booking/component/text_field_component/number_text_field.dart';
 import 'package:hotel_booking/component/button_component/button_text.dart';
 import 'package:hotel_booking/presentation/controllers/auth_controller.dart';
+import 'package:hotel_booking/domain/entities/auth_step.dart';
 
 class RegisterView extends GetView<AuthController> {
   const RegisterView({Key? key}) : super(key: key);

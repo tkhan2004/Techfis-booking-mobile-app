@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:hotel_booking/component/helper_component/success_dialog_widget.dart';
 import 'package:hotel_booking/data/datasources/mock_auth_service.dart';
 import 'package:hotel_booking/data/repositories/auth_repository.dart';
 import 'package:hotel_booking/routes/app_routes.dart';
-
-enum AuthStep { welcome, login, register, otpVerification }
+import 'package:hotel_booking/domain/entities/auth_step.dart';
 
 class AuthController extends GetxController {
   late final AuthRepository _authRepository;
@@ -210,7 +210,14 @@ class AuthController extends GetxController {
     try {
       final success = await _authRepository.login(email.value, password.value);
       if (success) {
-        Get.offNamed(AppRoutes.HOME);
+        showSuccessDialog(
+          title: "Login Successful!",
+          message: "Welcome back to VNhotel. Let's find your perfect stay.",
+          confirmText: "Go to Home",
+          onConfirm: () {
+            Get.offAllNamed(AppRoutes.HOME);
+          },
+        );
       } else {
         Get.snackbar(
           "Login Failed",

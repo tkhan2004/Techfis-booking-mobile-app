@@ -6,7 +6,7 @@ class MockAuthService {
     await Future.delayed(const Duration(seconds: 2));
 
     // Hardcoded credentials for testing
-    if (email == 'user@example.com' && password == 'password123') {
+    if (email == 'user@gmail.com' && password == '123456') {
       return true;
     } else {
       return false;
