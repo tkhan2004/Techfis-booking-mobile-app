@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking/presentation/controllers/notifications_controller.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
+import 'package:hotel_booking/domain/entities/notification_item.dart';
 
 class NotificationCard extends StatelessWidget {
   final NotificationItem item;

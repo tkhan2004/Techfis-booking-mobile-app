@@ -1,35 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking/domain/entities/hotel_entity.dart';
+import 'package:hotel_booking/domain/entities/payment_card.dart';
 import 'package:intl/intl.dart';
-
-enum PaymentCategory { bankCard, eWallet, other }
-
-enum PaymentIconType { creditCard, momoWallet, momoLink, bankTransfer }
-
-class PaymentCard {
-  final String id;
-  final String number;
-  final String type;
-  final String subtitle;
-  final String expiry;
-  final Color iconColor;
-  final PaymentIconType iconType;
-  final PaymentCategory category;
-  final bool isNavigate;
-
-  const PaymentCard({
-    required this.id,
-    this.number = '',
-    required this.type,
-    this.subtitle = '',
-    this.expiry = '',
-    this.iconColor = Colors.black,
-    this.iconType = PaymentIconType.creditCard,
-    this.category = PaymentCategory.bankCard,
-    this.isNavigate = false,
-  });
-}
 
 class BookingController extends GetxController {
   late HotelEntity hotel;

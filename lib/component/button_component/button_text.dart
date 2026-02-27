@@ -5,12 +5,14 @@ class ButtonText extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final bool isOutline;
+  final bool isTextColor;
 
   const ButtonText({
     super.key,
     required this.text,
     required this.onPressed,
     this.isOutline = false, // Mặc định là nút Solid (nền màu)
+    this.isTextColor = true,
   });
 
   @override
@@ -38,7 +40,9 @@ class ButtonText extends StatelessWidget {
         child: Text(
           text,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
-            color: Colors.black,
+            color: isTextColor
+                ? Colors.black
+                : (isOutline ? Colors.white : Colors.white),
             fontWeight: FontWeight.bold,
           ),
         ),

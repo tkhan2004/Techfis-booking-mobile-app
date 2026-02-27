@@ -5,6 +5,7 @@ import 'package:hotel_booking/presentation/pages/home_page/home_page.dart';
 import 'package:hotel_booking/presentation/pages/profile/profile_page.dart';
 import 'package:hotel_booking/presentation/pages/search/search_page.dart';
 import 'package:hotel_booking/presentation/pages/favorite/favorite_page.dart';
+import 'package:hotel_booking/presentation/pages/my_booking/my_booking_page.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/carbon.dart';
@@ -20,7 +21,7 @@ class MainView extends GetView<MainController> {
     final List<Widget> pages = [
       HomePage(),
       const SearchPage(),
-      const Center(child: Text("Booking Page", style: TextStyle(fontSize: 24))),
+      const MyBookingPage(),
       const FavoritePage(),
       const ProfilePage(),
     ];

@@ -68,7 +68,9 @@ class OnboardingPage extends GetView<OnboardingController> {
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.bodyMedium
                                     ?.copyWith(
-                                      color: Colors.white.withOpacity(0.8),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.8,
+                                      ),
                                     ),
                               ),
                             ],
@@ -92,7 +94,7 @@ class OnboardingPage extends GetView<OnboardingController> {
                                 decoration: BoxDecoration(
                                   color: controller.currentPage.value == index
                                       ? AppColors.primary
-                                      : Colors.white.withOpacity(0.5),
+                                      : Colors.white.withValues(alpha: 0.5),
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
@@ -107,12 +109,14 @@ class OnboardingPage extends GetView<OnboardingController> {
                               text: "Continue",
                               onPressed: controller.nextPage,
                               isOutline: false,
+                              isTextColor: true,
                             ),
                             const SizedBox(height: 8),
                             ButtonText(
                               text: "Skip for now",
                               onPressed: controller.skip,
                               isOutline: true,
+                              isTextColor: false,
                             ),
                           ],
                         ),

@@ -46,3 +46,4 @@ app.*.map.json
 
 # Project docs (internal notes, not for version control)
 docs/
+rule_commit_code.md

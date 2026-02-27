@@ -14,7 +14,7 @@ class InteractiveStarRating extends StatelessWidget {
     required this.currentRating,
     required this.onRatingChanged,
     this.starSize = 36.0,
-    this.filledColor = Colors.yellow,
+    this.filledColor = Colors.orange,
     this.emptyColor = Colors.grey,
   });
 

@@ -5,7 +5,7 @@ import 'package:hotel_booking/component/card_product_component/room_card.dart';
 import 'package:hotel_booking/component/card_product_component/travel_blog_card.dart';
 import 'package:hotel_booking/presentation/controllers/home_page_controller.dart';
 import 'package:hotel_booking/presentation/controllers/main_controller.dart';
-import 'package:hotel_booking/presentation/controllers/search_controller.dart';
+import 'package:hotel_booking/domain/entities/search_category.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_background.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_header.dart';
 import 'package:hotel_booking/presentation/pages/home_page/widgets/home_search_bar.dart';
@@ -102,6 +102,8 @@ class HomePage extends GetView<HomePageController> {
                                 image: hotel.image,
                                 location: hotel.name,
                                 subLocation: hotel.location,
+                                onTap: () => Get.find<MainController>()
+                                    .searchByLocation(hotel.name),
                               ),
                           ],
                         ),
@@ -111,8 +113,8 @@ class HomePage extends GetView<HomePageController> {
                     HomeSectionHeader(
                       title: "Travel Blog",
                       text: "Read all",
-                      onSeeAllPressed: () => Get.find<MainController>()
-                          .switchToSearch(SearchCategory.all),
+                      onSeeAllPressed: () =>
+                          Get.toNamed(AppRoutes.TRAVEL_BLOG_LIST),
                     ),
                     const SizedBox(height: 4),
                     SingleChildScrollView(
@@ -126,6 +128,10 @@ class HomePage extends GetView<HomePageController> {
                                 title: hotel.name,
                                 subTitle: hotel.description,
                                 publishedAt: hotel.date,
+                                onTap: () => Get.toNamed(
+                                  AppRoutes.TRAVEL_BLOG_DETAIL,
+                                  arguments: hotel,
+                                ),
                               ),
                           ],
                         ),

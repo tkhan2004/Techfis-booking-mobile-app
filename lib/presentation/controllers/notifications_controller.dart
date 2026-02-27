@@ -1,18 +1,5 @@
 import 'package:get/get.dart';
-
-class NotificationItem {
-  final String title;
-  final String description;
-  final String time;
-  final bool isRead;
-
-  NotificationItem({
-    required this.title,
-    required this.description,
-    required this.time,
-    this.isRead = false,
-  });
-}
+import 'package:hotel_booking/domain/entities/notification_item.dart';
 
 class NotificationsController extends GetxController {
   final notificationsToday = <NotificationItem>[].obs;

@@ -20,7 +20,6 @@ class BookingFieldWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Phần chữ bên trái
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -29,16 +28,13 @@ class BookingFieldWidget extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF1A1A1A), // Màu đen đậm tiêu đề
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 4),
               Text(
                 subtitle,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey, // Màu xám cho phụ đề
-                ),
+                style: const TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ],
           ),

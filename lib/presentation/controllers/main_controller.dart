@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hotel_booking/presentation/controllers/search_controller.dart';
+import 'package:hotel_booking/domain/entities/search_category.dart';
 
 class MainController extends GetxController {
   final RxInt currentIndex = 0.obs;
@@ -21,12 +22,18 @@ class MainController extends GetxController {
     }
   }
 
-  /// Switch sang Search tab + auto-filter theo category
-  /// Gọi từ HomePage khi user tap "See all"
   void switchToSearch(String? category) {
     if (category != null) {
       Get.find<HotelSearchController>().setCategory(category);
     }
+    Get.toNamed('/search-result');
+  }
+
+  /// Tìm kiếm theo địa điểm (từ Top Destination card)
+  void searchByLocation(String location) {
+    final searchController = Get.find<HotelSearchController>();
+    searchController.setCategory(SearchCategory.all);
+    searchController.onSearch(location);
     Get.toNamed('/search-result');
   }
 

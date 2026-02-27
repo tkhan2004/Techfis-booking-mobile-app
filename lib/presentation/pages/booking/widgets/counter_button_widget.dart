@@ -23,14 +23,14 @@ class CounterButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: enabled ? AppColors.primary : Colors.grey.shade300,
+            color: enabled ? AppColors.primary : Colors.grey,
             width: 1.5,
           ),
         ),
         child: Icon(
           icon,
           size: 18,
-          color: enabled ? AppColors.secondary : Colors.grey.shade400,
+          color: enabled ? AppColors.secondary : Colors.grey,
         ),
       ),
     );

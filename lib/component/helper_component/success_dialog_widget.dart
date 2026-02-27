@@ -1,52 +1,17 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel_booking/component/button_component/button_text.dart';
-import 'package:hotel_booking/component/logo_component/company_logo.dart';
 import 'package:hotel_booking/utils/constants/app_color.dart';
 
-void showConfirmDialog(
-  BuildContext context, {
+void showSuccessDialog({
   required String title,
   required String message,
   required VoidCallback onConfirm,
-  String cancelText = 'Cancel',
-  String confirmText = 'Confirm',
-  IconData icon = Icons.payment_rounded,
+  String confirmText = 'Continue',
 }) {
-  showDialog(
-    context: context,
-    barrierColor: Colors.black.withValues(alpha: 0.4),
-    builder: (_) => _ConfirmDialog(
-      title: title,
-      message: message,
-      onConfirm: onConfirm,
-      cancelText: cancelText,
-      confirmText: confirmText,
-      icon: icon,
-    ),
-  );
-}
-
-class _ConfirmDialog extends StatelessWidget {
-  final String title;
-  final String message;
-  final VoidCallback onConfirm;
-  final String cancelText;
-  final String confirmText;
-  final IconData icon;
-
-  const _ConfirmDialog({
-    required this.title,
-    required this.message,
-    required this.onConfirm,
-    required this.cancelText,
-    required this.confirmText,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
+  Get.dialog(
+    Dialog(
       backgroundColor: Colors.transparent,
       insetPadding: const EdgeInsets.symmetric(horizontal: 24),
       child: ClipRRect(
@@ -66,52 +31,56 @@ class _ConfirmDialog extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Container(child: CompanyLogo()),
-                const SizedBox(height: 16),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withValues(alpha: 0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.check_circle_rounded,
+                    color: AppColors.primary,
+                    size: 56,
+                  ),
+                ),
+                const SizedBox(height: 24),
 
-                // Title
                 Text(
                   title,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
                 const SizedBox(height: 8),
 
-                // Message
                 Text(
                   message,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 14,
                     color: Colors.grey.shade600,
                     height: 1.5,
                   ),
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 32),
 
-                // Buttons
                 ButtonText(
                   text: confirmText,
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Get.back();
                     onConfirm();
                   },
-                ),
-                const SizedBox(height: 10),
-                ButtonText(
-                  text: cancelText,
-                  isOutline: true,
-                  onPressed: () => Navigator.of(context).pop(),
                 ),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
+    ),
+    barrierColor: Colors.black.withValues(alpha: 0.4),
+    barrierDismissible: false,
+  );
 }
