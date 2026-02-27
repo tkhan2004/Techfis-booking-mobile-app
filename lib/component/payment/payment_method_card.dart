@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking/presentation/controllers/booking_controller.dart';
+import 'package:hotel_booking/domain/entities/payment_card.dart';
 
 /// Card tái sử dụng cho tất cả loại thanh toán:
 /// - Bank card (rectangular icon, expiry, radio)

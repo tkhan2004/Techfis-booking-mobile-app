@@ -2,44 +2,14 @@ import 'package:get/get.dart';
 import 'package:hotel_booking/data/datasources/mock_room_service.dart';
 import 'package:hotel_booking/data/repositories/room_repository.dart';
 import 'package:hotel_booking/models/hotel_model.dart';
-
-/// Các category filter — dùng String để dễ extend
-class SearchCategory {
-  static const String all = 'all';
-  static const String popular = 'popular';
-  static const String luxury = 'luxury';
-  static const String destination = 'destination';
-  static const String promotion = 'promotion';
-
-  static const List<String> values = [
-    all,
-    popular,
-    luxury,
-    destination,
-    promotion,
-  ];
-
-  static String label(String cat) {
-    switch (cat) {
-      case popular:
-        return 'Popular';
-      case luxury:
-        return 'Luxury';
-      case destination:
-        return 'Top Destination';
-      case promotion:
-        return 'Promotion';
-      default:
-        return 'All';
-    }
-  }
-}
+import 'package:hotel_booking/domain/entities/search_category.dart';
 
 class HotelSearchController extends GetxController {
   final _allHotels = <HotelModel>[].obs;
   final searchQuery = ''.obs;
   final activeCategory = Rx<String?>(SearchCategory.all);
   final isLoading = true.obs;
+  final selectedLocation = 'Select location...'.obs;
 
   late final RoomRepository _repository;
 

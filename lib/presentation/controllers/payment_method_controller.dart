@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel_booking/domain/entities/payment_card.dart';
 import 'package:hotel_booking/presentation/controllers/booking_controller.dart';
 
 class PaymentMethodController extends GetxController {
