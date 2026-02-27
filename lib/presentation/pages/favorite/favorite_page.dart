@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel_booking/routes/app_routes.dart';
 import 'package:hotel_booking/component/appbar_component/custom_app_bar.dart';
 import 'package:hotel_booking/component/card_product_component/favorite_room_card.dart';
 import 'package:hotel_booking/component/helper_component/app_scaffold.dart';
@@ -13,7 +14,6 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(FavoriteController());
-
     return AppScaffold(
       appBar: const CustomAppBar(
         title: "Favorite",
@@ -58,15 +58,12 @@ class FavoritePage extends StatelessWidget {
                               crossAxisCount: 2,
                               crossAxisSpacing: 16,
                               mainAxisSpacing: 16,
-                              childAspectRatio:
-                                  0.65, // Adjust this to match the proportion of card
+                              childAspectRatio: 0.72,
                             ),
                         itemCount: controller.favoriteHotels.length,
                         itemBuilder: (context, index) {
                           final hotel = controller.favoriteHotels[index];
                           return SizedBox(
-                            // Fixed height wrapper since GridView crossAxisCount takes precedence over Container height
-                            // The card proportion is controlled by childAspectRatio.
                             child: FavoriteRoomCard(
                               image: hotel.image,
                               title: hotel.name,
@@ -76,7 +73,10 @@ class FavoritePage extends StatelessWidget {
                               onFavoriteTap: () =>
                                   controller.toggleFavorite(hotel),
                               onTap: () {
-                                // Navigate to room detail if needed
+                                Get.toNamed(
+                                  AppRoutes.ROOM_DETAIL,
+                                  arguments: hotel,
+                                );
                               },
                             ),
                           );
