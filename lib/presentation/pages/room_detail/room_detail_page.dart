@@ -8,6 +8,7 @@ import 'package:hotel_booking/domain/entities/hotel_entity.dart';
 import 'package:hotel_booking/presentation/controllers/room_detail_controller.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/button_appbar_widget.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/button_room_detail_widget.dart';
+import 'package:hotel_booking/presentation/pages/room_detail/widgets/expandable_description.dart';
 import 'package:hotel_booking/component/helper_component/divider_widget.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/facility_item_widget.dart';
 import 'package:hotel_booking/presentation/pages/room_detail/widgets/review_card_widget.dart';
@@ -146,16 +147,10 @@ class RoomDetailPage extends GetView<RoomDetailController> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    controller.hotelEntity.description,
-                    style: TextStyle(
-                      color: Colors.grey[700],
-                      fontSize: 14,
-                      height: 1.5,
-                    ),
+                  ExpandableDescription(
+                    text: controller.hotelEntity.description,
                   ),
                   const SizedBox(height: 8),
-                  ButtonRoomDetailWidget(text: "Read more", onPressed: () {}),
                   buildDivider(),
                   Text(
                     "Facilities",
